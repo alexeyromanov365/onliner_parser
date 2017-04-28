@@ -1,5 +1,4 @@
 require 'optparse'
-require_relative 'info'
 
 class Input
 
@@ -37,8 +36,6 @@ class Input
     opts.on('-m','--metro metro', Array, 'Metro is existing') { |o| options[:metro] = o }
     opts.on('-s','--save save', 'Save option') { |o| save_options[:save_type] = o }
   end.parse!
-
-  Info.new(options).collect_info
 
 end
 

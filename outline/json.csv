@@ -1,0 +1,18 @@
+CSV
+Addrees; Washing machine; feature2;...;
++              : -;           asdfdsfg
+
+js = <<-JSON
+[
+  {
+    "address": "asdf",
+    "washing_machine": true,
+    "bools": false
+  },
+  {
+    "address": "hui"
+  }
+]
+JSON
+
+JSON.parse js

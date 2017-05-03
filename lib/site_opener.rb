@@ -1,6 +1,9 @@
+require 'nokogiri'
+require 'open-uri'
+
 class SiteOpener
 
-  def attr_reader :link
+  attr_reader :link
 
   def initialize(link = '')
     @link = link

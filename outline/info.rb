@@ -28,104 +28,22 @@ class Info
 
     page = Nokogiri::HTML(open("https://r.onliner.by/ak/apartments/66059"))
 
-    rooms = page.css(ROOMS)[0].text.strip #done
-    owner = page.css(OWNER)[1].text.strip #done
-    price_usd = page.css(PRICE_USD).text.strip # done
-    price_byn = page.css(PRICE_BYN).text.strip # done
-    description = page.css(DESCRIPTION).text.strip #done
-    adress = page.css(ADRESS).text.strip #done
-    telephone = page.css(TELEPHONE).text #done
-    call_info = page.css(CALL_INFO)[1].text.strip #done
-    owner_name = page.css(OWNER_NAME)[2].text.strip #done
+    rooms = page.css(ROOMS)[0].text.strip
+    owner = page.css(OWNER)[1].text.strip
+    price_usd = page.css(PRICE_USD).text.strip
+    price_byn = page.css(PRICE_BYN).text.strip
+    description = page.css(DESCRIPTION).text.strip
+    adress = page.css(ADRESS).text.strip
+    telephone = page.css(TELEPHONE).text
+    call_info = page.css(CALL_INFO)[1].text.strip
+    owner_name = page.css(OWNER_NAME)[2].text.strip
     features_elements = page.css(ALL_ELEMENTS)
     all_elements = features_elements.map(&:text)
     enabled_elements = all_elements - features_elements.css(ENABLED_ELEMENTS).map(&:text)
     disabled_elements = all_elements - enabled_elements
 
-
-
-
     info_array = []
     info_array += [rooms, owner, price_usd, price_byn, description, adress, tel, call_info, owner_name, enabled_elements, disabled_elements]
-    binding.pry
-
     File.open("out.csv", "a+") { |f| f.write(info_array) }
-
-    binding.pry
-
   end
 end
-
-
-
-    #File.open("out.#{file_format}", [a+]) { |f| f.write("here write flats info")}
-
-    #site_links.flatten.each do |link|
-      #puts link
-      #page = Nokogiri::HTML(open(link))
-      #puts link.inspect
-      #puts page.css("apartment-bar__value")
-    #end
-
-
-=begin
-    #elements true false
-    puts a = page.css("div.apartment-options__item").text #all elements
-    a.each { |n| puts a.content }
-    puts a.class
-    #puts a.split /(?=[А-Я])/
-    puts b = page.css("div.apartment-options__item.apartment-options__item_lack").text
-    #puts b.split /(?=[А-Я])/
-    puts a.class, b.class
-=end
-
-
-
-
-
-=begin
-
-
-File.open("out.txt", [your-option-string]) {|f| f.write("write your stuff here") }
-where your options are:
-
-r - Read only. The file must exist.
-w - Create an empty file for writing.
-a - Append to a file.The file is created if it does not exist.
-r+ - Open a file for update both reading and writing. The file must exist.
-w+ - Create an empty file for both reading and writing.
-a+ - Open a file for reading and appending. The file is created if it does not exist.
-
-In your case, w is preferable.
-
-OR you could have:
-
-out_file = File.new("out.txt", "w")
-#...
-out_file.puts("write your stuff here")
-#...
-out_file.close
-
-
-
-
-
-
-page.css("div.apartment-options__item").inject({}) do |result, element|
-      if element.has_class
-      result[:dibadle].merge! {  } if
-    end
-
-
-
-
-
-CSV.open("filename.csv", "w+") do |csv_file|
-  results.each do |row|
-    csv_file << row
-  end
-end
-
-
-
-=end

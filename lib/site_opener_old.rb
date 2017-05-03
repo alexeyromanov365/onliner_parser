@@ -4,7 +4,7 @@ require 'active_support/core_ext/hash'
 require 'pry'
 require 'json'
 
-class SiteOpener
+class SiteOpenerOld
 
   URL = "https://ak.api.onliner.by/search/apartments?".freeze
 

@@ -14,6 +14,3 @@ class ApartmentsData
     end
   end
 end
-
-
-

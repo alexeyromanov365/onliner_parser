@@ -1,10 +1,8 @@
-#done
-
 require 'spec_helper'
 require 'site_opener'
 require 'net/http'
 
-LINK = "https://r.onliner.by/ak/apartments/215922".freeze
+LINK = "https://r.onliner.by/ak/apartments/224196".freeze
 
 RSpec.describe SiteOpener do
   subject(:opener) { described_class.new(LINK) }

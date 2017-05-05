@@ -14,6 +14,8 @@ class ApartmentsCollection
   ALL_ELEMENTS = "div.apartment-options__item".freeze
   ENABLED_ELEMENTS = ".apartment-options__item_lack".freeze
 
+  attr_reader :page
+
   def initialize(link)
     @page = SiteOpener.new(link).open_site
   end
@@ -34,48 +36,50 @@ class ApartmentsCollection
     }
   end
 
+  private
+
   def rooms
-    @page.css(ROOMS)[0].text.strip
+    page.css(ROOMS)[0].text.strip
   end
 
   def owner
-    @page.css(OWNER)[1].text.strip
+    page.css(OWNER)[1].text.strip
   end
 
   def price_usd
-    @page.css(PRICE_USD).text.strip
+    page.css(PRICE_USD).text.strip
   end
 
   def price_byn
-    @page.css(PRICE_BYN).text.strip
+    page.css(PRICE_BYN).text.strip
   end
 
   def description
-    @page.css(DESCRIPTION).text.strip.gsub("\n", " ")
+    page.css(DESCRIPTION).text.strip.gsub("\n", " ")
   end
 
   def address
-    @page.css(ADDRESS).text.strip
+    page.css(ADDRESS).text.strip
   end
 
   def telephone
-    @page.css(TELEPHONE).text.strip
+    page.css(TELEPHONE).text.strip
   end
 
   def call_info
-    @page.css(CALL_INFO)[1].text.strip
+    page.css(CALL_INFO)[1].text.strip
   end
 
   def owner_name
-    @page.css(OWNER_NAME)[2].text.strip
+    page.css(OWNER_NAME)[2].text.strip
   end
 
   def all_elements
-    @page.css(ALL_ELEMENTS).map(&:text)
+    page.css(ALL_ELEMENTS).map(&:text)
   end
 
   def features_elements
-    @page.css(ALL_ELEMENTS)
+    page.css(ALL_ELEMENTS)
   end
 
   def enabled_elements
